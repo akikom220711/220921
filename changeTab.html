@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <form name="form1">
+      <p :class="selectStyle01"><input id="tab1" class="radio_button" type="radio" name="Tab" v-on:click="clickOne" checked><label class="tab_text" for="tab1">タブ1</label></p><p :class="selectStyle02"><input id="tab2" class="radio_button" type="radio" name="Tab" v-on:click="clickTwo"><label class="tab_text" for="tab2">タブ2</label></p><p :class="selectStyle03"><input id="tab3" class="radio_button" type="radio" name="Tab" v-on:click="clickThree"><label class="tab_text" for="tab3">タブ3</label></p>
+    </form>
+    <p>{{ text }}</p>
+  </div>
+
+  <script>
+    const nv = new Vue({
+      el: '#app',
+      data:{
+        text: 'コンテンツ1',
+        selectStyle01: 'tab_selected',
+        selectStyle02: 'tab_style',
+        selectStyle03: 'tab_style',
+      },
+      methods: {
+        clickOne(){
+          this.text = 'コンテンツ1';
+          if (document.form1.tab1.checked) {
+            this.selectStyle01 = 'tab_selected';
+            this.selectStyle02 = 'tab_style';
+            this.selectStyle03 = 'tab_style';
+          }
+        },
+        clickTwo(){
+          this.text = 'コンテンツ2';
+          if (document.form1.tab2.checked) {
+            this.selectStyle01 = 'tab_style';
+            this.selectStyle02 = 'tab_selected';
+            this.selectStyle03 = 'tab_style';
+          }
+        },
+        clickThree() {
+          this.text = 'コンテンツ3';
+          if (document.form1.tab3.checked) {
+            this.selectStyle01 = 'tab_style';
+            this.selectStyle02 = 'tab_style';
+            this.selectStyle03 = 'tab_selected';
+          }
+        }
+      }
+    })
+  </script>
+
+  <style>
+
+    .tab_style{
+      display:inline-block;
+      border: 0.1vw solid gray;
+      text-align: center;
+      padding:0.5vw 5vw;
+      margin: 0;
+    }
+
+    .tab_text{
+      font-size: 2vw;
+      font-weight: bold;
+      font-family: Helvetica, "游ゴシック" sans-serif;
+    }
+
+    .radio_button{
+      display: none;
+    }
+
+    .tab_selected{
+      display:inline-block;
+      border: 0.1vw solid black;
+      color: white;
+      background:black;
+      text-align: center;
+      padding:0.5vw 5vw;
+      margin: 0;
+    }
+
+    
+  </style>
+
+</body>
+</html>
