@@ -11,7 +11,7 @@
 
 <body>
   <div id="app">
-    <input type="text" v-model="searchText" v-on:change="search">
+    <input type="text" v-model="searchText" v-on:input="search">
     <p v-for="searchedName in searchedNames" :key="searchedName">{{ searchedName }}</p>
   </div>
 
